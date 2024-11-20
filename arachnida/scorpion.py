@@ -6,9 +6,7 @@ from datetime import datetime
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".bmp"}
 
 def process_file(file_path):
-    """Process file based on its extension."""
     try:
-        # Get file extension
         file_ext = os.path.splitext(file_path)[1].lower()
 
         if file_ext in SUPPORTED_EXTENSIONS:
@@ -27,13 +25,15 @@ def process_file(file_path):
         print(f"Error processing {file_path}: {e}")
 
 def main():
-    parser = argparse.ArgumentParser(prog="Scorpion", description="Programm to extract image metadata.")
+    parser = argparse.ArgumentParser(
+        description="Program to extract image metadata.",
+        usage="scorpion.py [-h] file1 [file2...]"
+    )
     parser.add_argument("files", nargs='+', help="The name of the file(s) to extract from.")
 
     args = parser.parse_args()
     
     for file_path in args.files:
-        # Convert to absolute path
         abs_path = os.path.abspath(file_path)
         
         if not os.path.exists(abs_path):

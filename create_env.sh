@@ -9,6 +9,8 @@ source cybersecurity_env/bin/activate
 pip install requests
 pip install exifread
 pip install beautifulsoup4
+pip install cryptography
+pip install fernet
 
 # Exit virtual environment
 deactivate
